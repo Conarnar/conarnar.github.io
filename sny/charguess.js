@@ -95,7 +95,7 @@ function autocomplete(inp, arr) {
   });
 }
 
-var names = ["Andrew", "Conar", "Kian", "Kira", "Leanne", "Sairin", "Tesslyn", "Tyzairo"];
+var names = ["Andrew", "Conar", "Kian", "Kira", "Leanne", "Sairin", "Tesslyn", "Tyzairo", "Kenchi"];
 autocomplete(document.getElementById("guess"), names);
 
 var order = [];
