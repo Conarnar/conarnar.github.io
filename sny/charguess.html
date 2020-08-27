@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Character Guesser</title>
+  <title>Guess S&Y Character Names</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 * {
@@ -30,10 +30,12 @@ input[type=text] {
   width: 100%;
 }
 
-input[type=submit] {
-  background-color: DodgerBlue;
-  color: #fff;
+button {
+  color: #000000;
   cursor: pointer;
+  width: 280px;
+  height: 40px;
+  margin: 10px;
 }
 
 .autocomplete-items {
@@ -65,13 +67,23 @@ input[type=submit] {
   background-color: DodgerBlue !important; 
   color: #ffffff; 
 }
+
+.crop {
+  width: 144px;
+  height: 144px;
+  overflow: hidden;
+  border: 1px solid black;
+}
 </style>
 </head> 
 <body>
 
 <div id="game">
-<img id="headimg" alt="???">
-<p id="ttttt">Who is this?</p>
+<p id="charnum"></p>
+<div id="crop" class="crop">
+  <img id="headimg" alt="???">
+</div>
+<p>Who is this?</p>
 <form autocomplete="off" action="/action_page.php">
   <div class="autocomplete" style="width:300px;">
     <input type="text" id="guess" name="guess" placeholder="Name?">

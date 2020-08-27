@@ -95,7 +95,7 @@ function autocomplete(inp, arr) {
   });
 }
 
-var names = ["Andrew", "Conar", "Kian", "Kira", "Leanne", "Sairin", "Tesslyn", "Tyzairo", "Kenchi"];
+var names = ["Andrew", "Conar", "Kian", "Leanne", "Sairin", "Tesslyn", "Tyzairo", "Kenchi", "Kira"];
 autocomplete(document.getElementById("guess"), names);
 
 var order = [];
@@ -105,21 +105,49 @@ for (var i = 0; i < names.length; i++) {
 
 var index = 0;
 var correct = 0;
-document.getElementById('headimg').src = "img/" + order[index] + ".png";
+
+var imgWidth = 144;
+var imgHeight = 144;
+var rowLen = 3;
+
+function getMargin(index) {
+  var top = Math.floor(index / rowLen) * 144;
+  var left = (index % rowLen) * 144;
+  return "-" + top + "px 0px 0px -" + left + "px";
+}
+
+document.getElementById("charnum").innerHTML = "<h3>Character " + (index + 1) + " of " + names.length + "</h3>";
+document.getElementById('headimg').style.margin = getMargin(order[index]);
+document.getElementById('headimg').src = "chars.png";
+
+var incorrect = [];
+var incorrectName = [];
 
 function button() {
 	if (document.getElementById('guess').value == names[order[index]]) {
 		correct++;
-	}
+	} else {
+    incorrect.push(order[index]);
+    incorrectName.push(document.getElementById('guess').value);
+  }
 	document.getElementById('guess').value = "";
 
 	index++;
 
 	if (index < names.length) {
-		document.getElementById('headimg').src = "img/" + order[index] + ".png";
+    document.getElementById("charnum").innerHTML = "<h3>Character " + (index + 1) + " of " + names.length + "</h3>";
+    document.getElementById('headimg').style.margin = getMargin(order[index]);
 	} else {
 		document.getElementById('game').style.display = "none";
-		document.getElementById("results").innerHTML = "You got " + correct + "/" + names.length + " correct.";
+
+    var results = "<h3>You got " + correct + "/" + names.length + " correct.</h3>";
+    for (var i = 0; i < incorrect.length; i++) {
+      results += "<div class=\"crop\"><img src=\"chars.png\" alt=\"???\" style=\"margin: " + getMargin(incorrect[i]) + "\"></div>"
+       + "<p>Your guess: " + incorrectName[i] + "</p>"
+       + "<p>Correct answer: " + names[incorrect[i]] + "</p>";
+    }
+
+    document.getElementById("results").innerHTML = results;
 	}
 }
 
