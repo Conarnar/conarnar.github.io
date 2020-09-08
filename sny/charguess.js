@@ -95,8 +95,12 @@ function autocomplete(inp, arr) {
   });
 }
 
-var names = ["Andrew", "Conar", "Kian", "Leanne", "Sairin", "Tesslyn", "Tyzairo", "Kenchi", "Kira"];
-autocomplete(document.getElementById("guess"), names);
+var names = ["Tatsuga", "Work", "Jess", "Kian", "Illia", "Jaime", "Shannon", "Kenchi", "Sullen", "Kinoko", "Susugu", "Viivi", "Tesslyn", "Cole", "Yoneka", "Maria", "Teru-Baba", "Genmi", "Kiyokuro", "Shuu", "Devi", "Youka", "Mashiro", "Aiko", "Karigou", "Karakaze", "Shugou", "Taya", "Piccolo", "Juubi", "Nobody", "Hikaru", "Ariel", "Yuno", "Alastair", "Junna", "Kotobuki", "Conar", "Mondo", "Usue", "Sanko", "Veemon", "SYPC-3", "Phantom", "Sandra", "Abuchi", "Cisa", "Mouru", "Kachari", "Camelan", "Penny", "Manozeen", "Lissai", "Sairin", "Meowstic", "Juro", "Seigeki", "Yuuki", "Rianne", "Shokora", "Robin", "Cindy", "Agent", "Theliea", "Wolfy", "Hiroyuki", "Tyzairo", "Xiki", "Susuki", "Tricky", "Drugs", "Asahi", "Chiyo", "Stacy", "Chione", "Gabe", "Markus", "Kosuke", "Hersir", "Sophie", "Bridgette", "Gizmo", "Sarah", "Renee", "Myonu", "Rei", "Banana"];
+
+var sortedNames = names.slice();
+sortedNames.sort();
+
+autocomplete(document.getElementById("guess"), sortedNames);
 
 var order = [];
 for (var i = 0; i < names.length; i++) {
@@ -106,13 +110,13 @@ for (var i = 0; i < names.length; i++) {
 var index = 0;
 var correct = 0;
 
-var imgWidth = 144;
-var imgHeight = 144;
-var rowLen = 3;
+var imgWidth = 200;
+var imgHeight = 200;
+var rowLen = 10;
 
 function getMargin(index) {
-  var top = Math.floor(index / rowLen) * 144;
-  var left = (index % rowLen) * 144;
+  var top = Math.floor(index / rowLen) * imgWidth;
+  var left = (index % rowLen) * imgHeight;
   return "-" + top + "px 0px 0px -" + left + "px";
 }
 
